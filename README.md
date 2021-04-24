@@ -9,13 +9,15 @@ __END_MSG__
 ```
 
 ```java
-public class JsonObject {
+class JsonObject {
   String example;
   
   public String getExample(){
     return example;
   }
-  
+}
+
+public class App {
   public static void main(){
     Connection client = Protocol.connect("localhost",PORT);
     System.out.println(client.recieve(JsonObject.class).getExample());
