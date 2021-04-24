@@ -15,8 +15,14 @@ public class JsonObject {
   public String getExample(){
     return example;
   }
+  
+  public static void main(){
+    Connection client = Protocol.connect("localhost",PORT);
+    System.out.println(client.recieve(JsonObject.class).getExample());
+  }
 }
 ```
+
 Only really meant for me specifically. 
 its supposed to work with sockets in order for C++ projects to interact with any data i want accessed from java.
 
