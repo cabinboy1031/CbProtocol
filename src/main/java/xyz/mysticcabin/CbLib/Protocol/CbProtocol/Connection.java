@@ -8,5 +8,6 @@ import java.net.Socket;
 public interface Connection {
     int send(Message message) throws IOException;
     Message recieve();
+
     void close();
 }

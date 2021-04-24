@@ -8,11 +8,11 @@ import java.io.*;
 import java.net.Socket;
 
 public class ConnectionImpl implements Connection {
-    DataInputStream inputStream;
-    DataOutputStream outputStream;
-    Socket socket;
+    private DataInputStream inputStream;
+    private DataOutputStream outputStream;
+    private Socket socket;
 
-    public Connection setup(Socket socket) {
+    public ConnectionImpl(Socket socket) {
         this.socket = socket;
         try {
             this.outputStream = new DataOutputStream(socket.getOutputStream());
@@ -20,8 +20,6 @@ public class ConnectionImpl implements Connection {
         } catch (IOException e){
             e.printStackTrace();
         }
-
-        return this;
     }
 
 

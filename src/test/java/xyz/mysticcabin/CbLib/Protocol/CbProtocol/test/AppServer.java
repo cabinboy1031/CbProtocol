@@ -8,8 +8,7 @@ import java.io.*;
 
 public class AppServer {
     public static void main(String[] args) throws IOException {
-        Connection server = Protocol.connect(400,
-                (socket) -> new ConnectionImpl().setup(socket));
+        Connection server = Protocol.connect(400, ConnectionImpl::new);
 
         System.out.println(server.recieve().getData());
         server.send(new StringMessage("I LOVE YOU TOO RANDOM CITIZEN."));

@@ -16,7 +16,7 @@ public class StringMessage implements Message {
             return message;
         }
     }
-    StringObject data;
+    private StringObject data;
     public static final String FOOTER = "__MSG_END__";
 
     public StringMessage(String message){
