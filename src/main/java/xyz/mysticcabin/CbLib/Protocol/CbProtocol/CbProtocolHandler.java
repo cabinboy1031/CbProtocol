@@ -1,18 +1,16 @@
-package xyz.mysticcabin.CbLib.Protocol.CbProtocol.test;
+package xyz.mysticcabin.CbLib.Protocol.CbProtocol;
 
-import xyz.mysticcabin.CbLib.Protocol.CbProtocol.Connection;
-import xyz.mysticcabin.CbLib.Protocol.CbProtocol.Message;
-import xyz.mysticcabin.CbLib.Protocol.CbProtocol.StringMessage;
+import xyz.mysticcabin.CbLib.Protocol.ProtocolHandler;
 
 import java.io.*;
 import java.net.Socket;
 
-public class ConnectionImpl implements Connection {
+public class CbProtocolHandler implements ProtocolHandler {
     private DataInputStream inputStream;
     private DataOutputStream outputStream;
     private Socket socket;
 
-    public ConnectionImpl(Socket socket) {
+    public CbProtocolHandler(Socket socket) {
         this.socket = socket;
         try {
             this.outputStream = new DataOutputStream(socket.getOutputStream());

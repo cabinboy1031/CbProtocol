@@ -1,12 +1,12 @@
-package xyz.mysticcabin.CbLib.Protocol.CbProtocol;
+package xyz.mysticcabin.CbLib.Protocol;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Protocol {
-    public static Connection connect(String host, int port,
-                                     ProtocolActor fun) throws IOException {
+    public static ProtocolHandler connect(String host, int port,
+                                          ProtocolActor fun) throws IOException {
         Socket socket;
         System.out.print("Waiting for server...");
         socket = new Socket(host, port);
@@ -16,8 +16,8 @@ public class Protocol {
         return fun.run(socket);
     }
 
-    public static Connection connect(int port,
-                                     ProtocolActor fun) throws IOException{
+    public static ProtocolHandler connect(int port,
+                                          ProtocolActor fun) throws IOException{
         Socket socket;
         ServerSocket serverSocket;
 
