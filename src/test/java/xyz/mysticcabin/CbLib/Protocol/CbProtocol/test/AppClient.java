@@ -14,7 +14,9 @@ public class AppClient {
         ProtocolHandler client = Protocol.connect("localhost",400, CbProtocolHandler::new);
 
         client.send(new Message<>(new StringWrapper("Hello world!\nfuck you god\n__END_MSG__\n")));
-        IMessage<StringWrapper> message = client.receive(StringWrapper.class);
+
+        //TODO Make a single function
+        IMessage<StringWrapper> message = client.receive();
         StringWrapper data = (StringWrapper) message.unpack(StringWrapper.class);
 
         System.out.println(data.message);

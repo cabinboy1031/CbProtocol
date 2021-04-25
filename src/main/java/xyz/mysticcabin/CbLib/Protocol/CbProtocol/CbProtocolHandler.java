@@ -40,7 +40,7 @@ public class CbProtocolHandler implements ProtocolHandler {
     }
 
     @Override
-    public <T> Message<T> receive(Class<T> classType) {
+    public <T> Message<T> receive() {
         try {
             System.out.print("Waiting for message...");
             StringBuilder input = new StringBuilder();

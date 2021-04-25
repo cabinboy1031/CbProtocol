@@ -13,7 +13,7 @@ public class AppServer {
         ProtocolHandler server = Protocol.connect(400, CbProtocolHandler::new);
 
         //TODO turn this into a function or put this into an existing function;
-        IMessage<StringWrapper> message = server.receive(StringWrapper.class);
+        IMessage<StringWrapper> message = server.receive();
         StringWrapper data = (StringWrapper) message.unpack(StringWrapper.class);
 
         System.out.println(data.message);
