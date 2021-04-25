@@ -1,12 +1,12 @@
 package xyz.mysticcabin.CbLib.Protocol;
 
-import xyz.mysticcabin.CbLib.Protocol.CbProtocol.Message;
+import xyz.mysticcabin.CbLib.Protocol.CbProtocol.IMessage;
 
 import java.io.IOException;
 
 public interface ProtocolHandler {
-    int send(Message message) throws IOException;
-    Message recieve();
+    <T> int send(IMessage<T> message) throws IOException;
+    <T> IMessage<T> receive(Class<T> classType);
 
     void close();
 }

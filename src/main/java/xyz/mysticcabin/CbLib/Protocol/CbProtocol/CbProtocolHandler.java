@@ -20,16 +20,14 @@ public class CbProtocolHandler implements ProtocolHandler {
         }
     }
 
-
     @Override
-    public int send(Message message){
-        StringMessage data = (StringMessage) message;
+    public <T> int send(IMessage<T> message){
         try {
             System.out.println("Sending message:\n"
-                    + data.getData());
+                    + message);
 
-            StringMessage packedMessage = (StringMessage) data.pack();
-            String[] output = packedMessage.getData().split("\n");
+            String packedMessage = message.pack();
+            String[] output = packedMessage.split("\n");
             for(String line : output){
                 outputStream.writeUTF(line);
             }
@@ -42,23 +40,23 @@ public class CbProtocolHandler implements ProtocolHandler {
     }
 
     @Override
-    public StringMessage recieve() {
+    public <T> Message<T> receive(Class<T> classType) {
         try {
             System.out.print("Waiting for message...");
             StringBuilder input = new StringBuilder();
 
             String line = "";
-            while(!line.equals(StringMessage.FOOTER)) {
+            while(!line.equals(IMessage.FOOTER)) {
                 line = inputStream.readUTF();
                 input.append(line).append("\n");
             }
 
-            StringMessage data = new StringMessage(input.toString());
+
             System.out.println("done.");
-            return (StringMessage) data.unpack();
+            return new Message<>(input.toString());
         } catch (IOException e) {
             System.err.println("Connection closed before read.");
-            return new StringMessage("");
+            return null;
         }
     }
 
