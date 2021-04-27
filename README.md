@@ -29,3 +29,5 @@ Only really meant for me specifically.
 its supposed to work with sockets in order for C++ projects to interact with any data i want accessed from java.
 
 It uses the GSON library to send and recieve json objects, the end goal is to pass an object into a message class and the message will format itself without extra effort.
+
+NOTE: Any rules for sending and recieving data are the same as serializing/deserializing with the GSON library. This really cant be changed due to the fact that i wanted a plaintext interface, just keep in mind if you compose a class that makes use of references to other classes, or more importantly a circular reference.
